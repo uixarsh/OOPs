@@ -8,7 +8,7 @@ class Hero {
     int level;
 
     public:
-    char name[100];
+    char name[100]= "ARSH";
     //getter
     int getLevel() {
         return level;
@@ -21,14 +21,15 @@ class Hero {
 
 int main () {
     // DYNAMIC DECLARATION
-    int *p = new int;
+    Hero *HeroPtr = new Hero;
 
-    // STATIC DECLARATION
-    int *p;
-    *p = 20;
+    // cout<<(*HeroPtr).name<<endl;
+    // cout<<&HeroPtr;
+    // delete HeroPtr;
 
-    cout<<*p;
-
+    HeroPtr->setLevel(100);
+    cout<<HeroPtr->getLevel();
+    delete HeroPtr;
 
     return 0;
 }
