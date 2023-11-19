@@ -1,9 +1,9 @@
 
-// THIS POINTER
+// THIS POINTER -> POINTER TO CURRENT OBJECT .....
 
 // HERE IN THIS EXAMPLE WE INITIALLY SET THE WEIGHT TO 100 AND USING SETTER WE ARE UPDATING THE VALUE OF THE WEIGHT 
 // YET THE VALUE RETURNED DOESN'T GETS CHANGED AS THERE IS A CATCH AT Function void setWeight(int)
-// In order to correct this we need to use THIS Pointer as it is a pointer towards a class properties.
+// In order to correct this we need to use THIS Pointer as it is a pointer to current object.
 
 #include <iostream>
 using namespace std;
