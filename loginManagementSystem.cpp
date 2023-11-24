@@ -10,6 +10,7 @@ using namespace std;
 class User {
     private:
         string username, password;
+
     public:
         User(string name, string pass){
             this->username = name;
