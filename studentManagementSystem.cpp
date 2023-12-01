@@ -6,6 +6,7 @@
 #include <string>
 using namespace std;
 
+
 class Student {
     private:
         string studentName;
@@ -47,9 +48,10 @@ class Student {
         cout<<"\t\tName : "<<this->studentName<<endl;
         cout<<"\t\tAge : "<<this->studentAge<<endl;
     }
+
 };
 
-// Create function to add new student.
+// Function to Add New Student.
 void addNewStudent (vector<Student> &students) {
     int rollno, age;
     string name;
@@ -75,7 +77,7 @@ void addNewStudent (vector<Student> &students) {
     cout<<"\t\tStudent Add Successfully..."<<endl;
 }
 
-// Function to Display All students..
+// Function to Display All Students..
 void displayAllStudents(vector<Student> &students){
     if (students.empty()){
         cout<<"\t\t No Students Found"<<endl;
@@ -88,14 +90,51 @@ void displayAllStudents(vector<Student> &students){
     }
 }
 
+// Function to Search Students...
+void searchStudent (vector<Student> &students, string &key){
+    if (students.empty()){
+        cout<<"\t\t No Students Found"<<endl;
+        return;
+    }
+
+    for (int i=0; i<students.size(); i++){
+        if (students[i].getName() == key ){
+            cout<<"\t\t Student Found"<<endl;
+            return;
+        }
+
+        else {
+            cout<<"\t\t Student Not Found"<<endl;
+            return;
+        }
+    }
+    
+}
+
+// Function to Update Student....
+void updateStudent (vector<Student> &students, string &keyName, int &keyRoll){
+    int i=0;
+    string name;
+    for (i; i<students.size(); i++){
+        if(students[i].getRollno() == keyRoll && students[i].getName() == keyName){
+            cout<<"\t\tEnter the Updated Name : ";
+            cin>>name;
+            students[i].setName(name);
+        }
+    }
+}
 
 
 int main () {
     vector <Student> students;
-    students.push_back(Student(1,20,"Arsh"));   // Student(roll, age , name)
 
-    int menuOptions;
+    students.push_back(Student(1,21,"Arsh"));   // Student(roll, age , name)
+    students.push_back(Student(2,22,"Shubham"));
+    students.push_back(Student(3,23,"Shubhangi"));
+
+    int menuOptions, keyRoll;
     char choice;
+    string keyName;
     
     do {
 
@@ -123,6 +162,21 @@ int main () {
         case 2:
             displayAllStudents(students);
             break;
+
+        case 3:
+            cout<<"\t\t Enter the student Name you want to search : ";
+            cin>>keyName;
+            searchStudent(students, keyName);
+            break;
+        
+        case 4:
+            cout<<"\t\t Enter the student Name you want to update : ";
+            cin>>keyName;
+            cout<<"\t\t Enter the Roll No of the student : ";
+            cin>>keyRoll;
+            updateStudent(students, keyName, keyRoll);
+            break;
+        
         
         case 6:
             exit (1);
