@@ -6,7 +6,6 @@
 #include <string>
 using namespace std;
 
-
 class Student {
     private:
         string studentName;
@@ -70,7 +69,7 @@ void addNewStudent (vector<Student> &students) {
     cin>>name;
     cout<<"\t\tEnter Age : ";
     cin>>age;
-
+    // Paraeterized construction...
     Student newStudent(rollno, age, name);
     students.push_back(newStudent);
 
@@ -122,6 +121,21 @@ void updateStudent (vector<Student> &students, string &keyName, int &keyRoll){
             students[i].setName(name);
         }
     }
+}
+
+int searchIt (vector<Student> &students, string &keyName){
+    int i=0;
+    for (i;i<students.size();i++){
+        if (students[i].getName() == keyName){
+            return i;
+        }
+    }
+}
+
+// Function to Delete Student.
+void deleteStudent (vector<Student> &students, string &keyName){
+    int index = searchIt (students, keyName);
+    students.erase(students.begin()+index);
 }
 
 
@@ -177,6 +191,11 @@ int main () {
             updateStudent(students, keyName, keyRoll);
             break;
         
+        case 5:
+            cout<<"\t\t Enter the student Name you want to delete : ";
+            cin>>keyName;
+            deleteStudent(students, keyName);
+            break;
         
         case 6:
             exit (1);
